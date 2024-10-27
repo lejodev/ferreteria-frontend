@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('carechimba');
-    this.connect();
+    // this.connect();
   }
 
   connect() {
