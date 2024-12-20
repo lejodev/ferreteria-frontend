@@ -14,17 +14,8 @@ export class ProdsListComponent implements OnInit {
   constructor(private listService: ListService) { }
 
   ngOnInit(): void {
-    this.listService.product.subscribe(prod => {
-      console.log(prod); 
-      this.currentProduct = prod
-      return prod
-    })
-
-    this.listService.getdate.subscribe(date => console.log(date))
-  }
-
-  changeProduct() {
-    this.listService.changeProduct = "carechimba"
+     this.listService.get().subscribe(data => { console.log(data) });
+    
   }
 
   // setDate() {
