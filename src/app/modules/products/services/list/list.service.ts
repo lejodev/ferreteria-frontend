@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpService } from 'src/app/app/core/services/http/http.service';
+import { HttpService } from 'src/app/core/services/http/http.service';
 import { Iproduct } from 'src/app/modules/dashboard/interfaces/Iproduct';
 
 @Injectable({

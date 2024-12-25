@@ -1,6 +1,10 @@
-<nav>DASHBOARD
-    <li>CLIENTS</li>
-    <li>PRODUCTS</li>
-    <li>SALES</li>
-    <button (click)="execSale()">CARECHIMBA</button>
-</nav>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Welcome to the Toolshop Management</h1>
+  </header>
+  <section class="dashboard-sections">
+    <app-kpis class="dashboard-section-kpis"></app-kpis>
+    <app-quick-actions class="dashboard-section-quick-actions"></app-quick-actions>
+    <app-graphs class="dashboard-section-graphs"></app-graphs>
+  </section>
+</div>
