@@ -11,13 +11,16 @@ import { NavbarComponent } from './theme/layout/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './modules/auth/auth.module';
-import { LoginComponent } from './modules/auth/components/login/login.component';
+import { BaseComponent } from './theme/layout/base/base.component';
+import { FooterComponent } from './theme/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    NavbarComponent
+    NavbarComponent,
+    BaseComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
