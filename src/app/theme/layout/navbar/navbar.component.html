@@ -1,3 +1,25 @@
-<header>
-    HEADER IS WORKING FINE LIKE WINE
-</header>
+<mat-toolbar color="primary" class="navbar">
+  <!-- Logo or Application Title -->
+  <span class="logo">MyApp</span>
+
+  <!-- Navigation Links -->
+  <div class="nav-links">
+    <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+    <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+    <a mat-button routerLink="/services" routerLinkActive="active-link">Services</a>
+  </div>
+
+  <!-- Filler to push the profile avatar to the right -->
+  <span class="spacer"></span>
+
+  <!-- Profile Avatar with a Menu -->
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <img class="avatar" src="https://via.placeholder.com/40" alt="Profile">
+  </button>
+
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item>Profile</button>
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Logout</button>
+  </mat-menu>
+</mat-toolbar>

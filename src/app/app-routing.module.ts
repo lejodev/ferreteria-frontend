@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './modules/auth/components/auth.component';
 import { AuthGuard } from './modules/auth/guards/auth/auth.guard';
 import { BaseComponent } from './theme/layout/base/base.component';
-import { RoleType } from './modules/auth/models/role.model';
+import { RoleType, Employee } from './modules/auth/models/role.model';
 
 const routes: Routes = [
   // Path for public, non-protected routes without BaseComponent (and thus without navbar/footer)
@@ -20,7 +20,7 @@ const routes: Routes = [
     path: '',
     component: BaseComponent,
     canActivate: [AuthGuard],
-    data: { roles: [RoleType.ADMIN, RoleType.CASHIER] }, // Define required roles for this route
+    data: { roles: [Employee.ADMIN, Employee.SELLER] }, // Define required roles for this route
     children: [
       {
         path: 'dashboard', 

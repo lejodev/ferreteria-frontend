@@ -6,21 +6,22 @@ import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './modules/products/products.module';
-import { LayoutComponent } from './theme/layout/layout.component';
-import { NavbarComponent } from './theme/layout/navbar/navbar.component';
+// import { LayoutComponent } from './theme/layout/layout.component';
+// import { NavbarComponent } from './theme/layout/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './modules/auth/auth.module';
-import { BaseComponent } from './theme/layout/base/base.component';
-import { FooterComponent } from './theme/layout/footer/footer.component';
+import { LayoutModule } from './theme/layout/layout.module';
+// import { BaseComponent } from './theme/layout/base/base.component';
+// import { FooterComponent } from './theme/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    NavbarComponent,
-    BaseComponent,
-    FooterComponent
+    // LayoutComponent,
+    // NavbarComponent,
+    // BaseComponent,
+    // FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,8 @@ import { FooterComponent } from './theme/layout/footer/footer.component';
     DashboardModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

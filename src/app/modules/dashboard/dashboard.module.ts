@@ -7,6 +7,7 @@ import { GraphsComponent } from './components/dashboard/graphs/graphs.component'
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardRoutingModule } from './dashboard.routing';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,7 +21,8 @@ import { DashboardRoutingModule } from './dashboard.routing';
   imports: [
     CommonModule,
     MatCardModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    HttpClientModule
   ],
    exports:[DashboardComponent ]
 })

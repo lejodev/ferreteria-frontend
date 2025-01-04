@@ -1,14 +1,17 @@
 <div class="kpi-cards">
-  <mat-card>
+  <mat-card *ngIf="salesAmount > 0; else noData">
     <mat-card-title>Total Sales</mat-card-title>
-    <mat-card-content>$4,500</mat-card-content>
+    <mat-card-content>${{salesAmount}}</mat-card-content>
   </mat-card>
-  <mat-card>
-    <mat-card-title>Products Sold</mat-card-title>
-    <mat-card-content>325</mat-card-content>
-  </mat-card>
+  <ng-template #noData>
+    <mat-card>
+      <mat-card-title>No sales data</mat-card-title>
+      <mat-card-content>No sales have been recorded yet</mat-card-content>
+    </mat-card>
+  </ng-template>
   <mat-card>
     <mat-card-title>Top Product</mat-card-title>
     <mat-card-content>Hammer</mat-card-content>
   </mat-card>
+
 </div>
