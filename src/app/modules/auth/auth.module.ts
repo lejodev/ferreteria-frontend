@@ -1,22 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './components/auth.component';
-import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthRoutingModule } from './auth.routes.module';
 import { RegisterComponent } from './components/register/register.component';
+import { RouterModule } from '@angular/router';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthLayoutComponent
   ],
   imports: [
     CommonModule,
-    // AuthRoutingModule,
+    RouterModule,
     SharedModule
   ],
   exports: [

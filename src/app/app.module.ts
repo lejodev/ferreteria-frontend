@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './modules/auth/auth.module';
 import { LayoutModule } from './theme/layout/layout.module';
+import { SalesModule } from './modules/sales/sales.module';
 // import { BaseComponent } from './theme/layout/base/base.component';
 // import { FooterComponent } from './theme/layout/footer/footer.component';
 
@@ -32,7 +33,8 @@ import { LayoutModule } from './theme/layout/layout.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AuthModule,
-    LayoutModule
+    LayoutModule,
+    SalesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

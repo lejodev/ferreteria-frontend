@@ -11,7 +11,6 @@ export class DashboardComponent implements OnInit {
   constructor(private salesservice: SalesServiceService, http: HttpClient) {}
 
   ngOnInit(): void {
-    console.log('carechimba');
     // this.connect();
   }
 

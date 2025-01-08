@@ -1,0 +1,40 @@
+.auth-container {
+  height: 100vh; /* Full height */
+}
+
+.drawer {
+  width: 300px; /* Set a fixed width for the drawer */
+  background-color: #f5f5f5; /* Light background for the drawer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.drawer-content {
+  text-align: center;
+}
+
+.app-name {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.app-logo {
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.register-option {
+  margin-top: 20px;
+  text-align: center;
+}

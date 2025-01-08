@@ -7,10 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-
-
-
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table'
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatTableModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -32,7 +38,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatTableModule
   ]
 })
 export class SharedModule { }

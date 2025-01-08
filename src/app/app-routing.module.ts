@@ -4,17 +4,22 @@ import { AuthComponent } from './modules/auth/components/auth.component';
 import { AuthGuard } from './modules/auth/guards/auth/auth.guard';
 import { BaseComponent } from './theme/layout/base/base.component';
 import { RoleType, Employee } from './modules/auth/models/role.model';
+import { NewSaleComponent } from './modules/sales/components/new-sale/new-sale.component';
+import { RegisterComponent } from './modules/auth/components/register/register.component';
+import { LoginComponent } from './modules/auth/components/login/login.component';
 
 const routes: Routes = [
   // Path for public, non-protected routes without BaseComponent (and thus without navbar/footer)
   {
-    path: '',
+    path: 'auth',
+    component: AuthComponent, // Use AuthComponent as the container for all auth-related routes
     children: [
-      { path: '', redirectTo: '/auth/login', pathMatch: 'full' }, // Redirect to login by default
-      { path: 'auth', redirectTo: '/auth/login' }, // Ensure '/auth' redirects to '/auth/login'
-      { path: 'auth/login', component: AuthComponent }, // Login route
+      { path: '', redirectTo: 'register', pathMatch: 'full' }, // Redirect /auth to /auth/login
+      { path: 'register', component: RegisterComponent }, // Register route
+      { path: 'login', component: LoginComponent }, // Login route
     ]
   },
+  
   // Path for protected routes with BaseComponent (with navbar, footer, and router-outlet)
   {
     path: '',
@@ -23,14 +28,18 @@ const routes: Routes = [
     data: { roles: [Employee.ADMIN, Employee.SELLER] }, // Define required roles for this route
     children: [
       {
-        path: 'dashboard', 
+        path: 'dashboard',
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
         // Note: You don't need another canActivate here since the parent route already uses AuthGuard
       },
+      {
+        path: 'sales',
+        component: NewSaleComponent
+      }
     ]
   },
   // Wildcard route
-  { path: '**', redirectTo: 'auth/login' } // Wildcard route
+  { path: '**', redirectTo: 'auth' } // Wildcard route
 ];
 
 @NgModule({
