@@ -28,7 +28,7 @@
     <!-- </form> -->
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -64,6 +64,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumn;"></tr>
+    <tr mat-footer-cell *matFooterCellDef> Total: </tr>
   </table>
 
   <!-- Submit Button -->
