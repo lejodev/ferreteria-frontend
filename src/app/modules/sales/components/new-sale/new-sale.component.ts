@@ -95,7 +95,7 @@ export class NewSaleComponent implements OnInit {
         alert('Sale submitted successfully')
       }, error: (error) => {
         console.log('ERROR', error);
-        alert('An erro occurred. Please verify and try again!')
+        alert('An error occurred. Please verify and try again!')
       }
     })
 

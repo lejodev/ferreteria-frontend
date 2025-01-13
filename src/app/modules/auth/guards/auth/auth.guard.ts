@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../../services/auth/auth.service';
-import { RoleType } from '../../models/role.model';
+import { Employee } from '../../models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const requiredRoles = route.data['roles'] as RoleType[];
+    const requiredRoles = route.data['roles'] as Employee[];
     console.log(requiredRoles);
     
     const token = this.authService.getToken();

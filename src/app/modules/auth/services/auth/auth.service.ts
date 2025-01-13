@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { LoginResponse } from '../../interfaces/login.interface';
-import { RoleType } from '../../models/role.model';
+import { Employee } from '../../models/role.model';
 import { jwtDecode } from 'jwt-decode';
 import { JwtPayload } from '../../interfaces/decodedJWTPayload.interface';
 import { tap } from 'rxjs';
@@ -23,7 +23,7 @@ export class AuthService {
 
   }
 
-  hasRole(requiredRoles: RoleType[]): boolean {
+  hasRole(requiredRoles: Employee[]): boolean {
     if (!this.isLoggedIn()) return false;
     const token = this.getToken();
     if (token) {

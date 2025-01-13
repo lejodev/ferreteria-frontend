@@ -1,13 +1,13 @@
 <mat-toolbar class="navbar">
   <!-- Logo or Application Title -->
-  <span class="logo">MyApp</span>
+  <a class="logo" mat-button routerLink="/dashboard">MyApp</a>
 
   <!-- Navigation Links -->
-  <div class="nav-links">
-    <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
-    <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
-    <a mat-button routerLink="/services" routerLinkActive="active-link">Services</a>
-  </div>
+  <ul class="nav-links">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active-link">Home</a>
+    <a mat-button routerLink="/stock" routerLinkActive="active-link" *ngIf="canManageStock" >STOCK</a>
+    <!-- <a mat-button routerLink="/" routerLinkActive="active-link">Services</a> -->
+  </ul>
 
   <!-- Filler to push the profile avatar to the right -->
   <span class="spacer"></span>
@@ -20,6 +20,6 @@
   <mat-menu #profileMenu="matMenu">
     <button mat-menu-item>Profile</button>
     <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Logout</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
   </mat-menu>
 </mat-toolbar>

@@ -1,7 +1,7 @@
 <div class="kpi-cards">
-  <mat-card *ngIf="salesAmount > 0; else noData">
+  <mat-card *ngIf="salesCount > 0; else noData">
     <mat-card-title>Total Sales</mat-card-title>
-    <mat-card-content>${{salesAmount}}</mat-card-content>
+    <mat-card-content>${{salesCount}}</mat-card-content>
   </mat-card>
   <ng-template #noData>
     <mat-card>

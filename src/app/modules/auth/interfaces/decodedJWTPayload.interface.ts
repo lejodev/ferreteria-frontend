@@ -1,9 +1,9 @@
-import { RoleType } from "../models/role.model";
+import { Employee } from "../models/role.model";
 
 export interface JwtPayload {
     id?: string;
     email?: string;
-    role?: RoleType;
+    role?: Employee;
     iat?: number;
     exp?: number;
 }
