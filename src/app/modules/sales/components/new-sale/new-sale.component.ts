@@ -51,7 +51,7 @@ export class NewSaleComponent implements OnInit {
       }
       else {
         console.log(this.selectedProduct.name, this.quantity);
-        currentData.push({ product_id: this.selectedProduct.id, name: this.selectedProduct.name, product_amount: this.quantity, price: this.selectedProduct.sellPrice * this.quantity })
+        currentData.push({ product_id: this.selectedProduct.productId, name: this.selectedProduct.name, product_amount: this.quantity, price: this.selectedProduct.sellPrice * this.quantity })
         // this.
       }
       this.dataSourceSubject.next([...currentData]) // Update the list (binded with layout)

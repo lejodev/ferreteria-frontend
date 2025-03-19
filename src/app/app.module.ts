@@ -9,10 +9,16 @@ import { ProductsModule } from './modules/products/products.module';
 // import { LayoutComponent } from './theme/layout/layout.component';
 // import { NavbarComponent } from './theme/layout/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './modules/auth/auth.module';
 import { LayoutModule } from './theme/layout/layout.module';
 import { SalesModule } from './modules/sales/sales.module';
+import { SharedModule } from './shared/shared.module';
+import { StockModule } from './modules/stock/stock.module';
+import { ModalModule } from './shared/components/modal/modal.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 // import { BaseComponent } from './theme/layout/base/base.component';
 // import { FooterComponent } from './theme/layout/footer/footer.component';
 
@@ -34,7 +40,11 @@ import { SalesModule } from './modules/sales/sales.module';
     ReactiveFormsModule,
     AuthModule,
     LayoutModule,
-    SalesModule
+    SalesModule,
+    SharedModule,
+    StockModule,
+    ModalModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

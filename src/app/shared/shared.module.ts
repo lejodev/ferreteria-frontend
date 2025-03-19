@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule, MatError} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table'
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table'
+import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [],
@@ -28,10 +31,13 @@ import {MatTableModule} from '@angular/material/table'
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatAutocompleteModule,
+    FormsModule,
+    BrowserModule
   ],
   exports: [
-    ReactiveFormsModule,
+    CommonModule,
     MatCardModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -43,7 +49,11 @@ import {MatTableModule} from '@angular/material/table'
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatAutocompleteModule,
+    MatDialogModule,
+    FormsModule,
+    BrowserModule,
   ]
 })
 export class SharedModule { }

@@ -7,8 +7,8 @@ import { Employee } from './modules/auth/models/role.model';
 import { NewSaleComponent } from './modules/sales/components/new-sale/new-sale.component';
 import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
-import { StockComponent } from './modules/stock/components/stock/stock.component';
 import { SalesLayoutComponent } from './modules/sales/components/sales-layout/sales-layout.component';
+import { StockLayoutComponent } from './modules/stock/components/stock-layout/stock-layout.component';
 
 const routes: Routes = [
   // Path for public, non-protected routes without BaseComponent (and thus without navbar/footer)
@@ -42,7 +42,7 @@ const routes: Routes = [
         component: SalesLayoutComponent
       },
       {
-        path: 'stock', component: StockComponent,
+        path: 'stock', component: StockLayoutComponent,
         canActivate: [AuthGuard],
         data: {roles: [Employee.ADMIN, Employee.CHIEF]}
       },

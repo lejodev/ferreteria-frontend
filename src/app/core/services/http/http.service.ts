@@ -16,10 +16,10 @@ export class HttpService {
     return base + endpoint
   }
 
-  get<T>(url: string, params?: HttpParams) {
+  get<T>(url: string, headers?: HttpHeaders, params?: HttpParams) {
     console.log("API", this.api(url));
 
-    return this.http.get<T>(this.api(url), { params });
+    return this.http.get<T>(this.api(url), {headers, params });
   }
 
   post<T>(url: string, body: any, headers?: HttpHeaders) {

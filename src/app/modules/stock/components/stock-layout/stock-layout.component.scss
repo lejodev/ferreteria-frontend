@@ -1,0 +1,25 @@
+.sales-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 16px;
+    padding: 16px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr; // Stacks all sections vertically on small screens
+    }
+}
+
+.notifications-section,
+.stock-list,
+.best-selling-stock {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card {
+    height: auto; // Allows cards to adjust height on smaller screens
+}
+
+mat-toolbar {
+    margin-bottom: 16px;
+}
