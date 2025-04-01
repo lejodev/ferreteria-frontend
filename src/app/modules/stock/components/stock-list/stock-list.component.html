@@ -1,86 +1,134 @@
 <mat-toolbar color="primary">
-    <span>Search stock</span>
+  <span>Search Stock</span>
 </mat-toolbar>
 
 <div class="sales-container">
-    <mat-card>
-        <mat-card-title>Stock Details</mat-card-title>
-        <form>
-            <mat-form-field class="example-full-width">
-                <input type="text" placeholder="Search stock" matInput [formControl]="myControl"
-                    [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{option}}</mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" (click)="onSearch($event)">Search</button>
-        </form>
+  <mat-card class="search-card">
+    <mat-card-title>Stock Details</mat-card-title>
+    <form (ngSubmit)="onSearch($event)">
+      <mat-form-field class="example-full-width">
+        <mat-label>Search stock</mat-label>
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Search</button>
+    </form>
+  </mat-card>
 
-    </mat-card>
+  <mat-card class="table-card">
+    <table mat-table [dataSource]="stockDatasource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem"> {{stockItem.id}} </mat-cell>
+      </ng-container>
 
-    <mat-card>
-        <table mat-table [dataSource]="stockDatasource">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem"> {{stockItem.products.name}} </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef>id</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">{{stockItem.id}}</mat-cell>
-            </ng-container>
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem"> {{stockItem.amount}} </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef>name</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">{{stockItem.products.name}}</mat-cell>
-            </ng-container>
+      <!-- Buy Price Column -->
+      <ng-container matColumnDef="buyPrice">
+        <mat-header-cell *matHeaderCellDef> Buy Price </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem"> {{stockItem.products.buyPrice | number:'1.2-2'}} </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="amount">
-                <mat-header-cell *matHeaderCellDef>amount</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">{{stockItem.amount}}</mat-cell>
-            </ng-container>
+      <!-- Sell Price Column -->
+      <ng-container matColumnDef="sellPrice">
+        <mat-header-cell *matHeaderCellDef> Sell Price </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem"> {{stockItem.products.sellPrice | number:'1.2-2'}} </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="buyPrice">
-                <mat-header-cell *matHeaderCellDef>buyPrice</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">{{stockItem.products.buyPrice}}</mat-cell>
-            </ng-container>
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let stockItem">
+          <button mat-raised-button color="primary" (click)="openModal(stockItem)">Edit</button>
+          <button mat-raised-button color="warn" (click)="onDelete(stockItem)">Delete</button>
+        </mat-cell>
+      </ng-container>
 
-            <ng-container matColumnDef="sellPrice">
-                <mat-header-cell *matHeaderCellDef>sellPrice</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">{{stockItem.products.sellPrice}}</mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="actions">
-                <mat-header-cell *matHeaderCellDef>actions</mat-header-cell>
-                <mat-cell *matCellDef="let stockItem">
-                    <button mat-raised-button color="primary" (click)="openModal(stockItem)">Edit</button>
-                    <button mat-raised-button color="warn">Delete</button>
-                </mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
-
-        </table>
-    </mat-card>
+      <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+    </table>
+  </mat-card>
 </div>
 
 <ng-template #modal>
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Edit Stock Item</h2>
-        <button class="close" (click)="dialog.closeAll()">X</button>
-      </div>
-      <div class="modal-content">
-        <p><strong>ID:</strong> {{ selectedStock.id }}</p>
-        <p><strong>Name:</strong> {{ selectedStock.products.name }}</p>
-        <p><strong>Amount:</strong> 
-          <input type="number" [(ngModel)]="selectedStock.amount">
-        </p>
-        <!-- <p><strong>Buy Price:</strong> {{ selectedStock?.products.buyPrice }}</p> -->
-        <!-- <p><strong>Sell Price:</strong> {{ selectedStock?.products.sellPrice }}</p> -->
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" (click)="dialog.closeAll()">Cancel</button>
-        <button class="btn btn-primary" (click)="saveChanges()">Save</button>
-      </div>
+  <div class="modal">
+    <div class="modal-header">
+      <h2 mat-dialog-title>Edit Stock Item</h2>
+      <button mat-icon-button class="close" (click)="dialog.closeAll()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <div class="modal-backdrop"></div>
-  </ng-template>
-  
+
+    <mat-dialog-content class="modal-content">
+      <p><strong>ID:</strong> {{ selectedStock.id }}</p>
+      <form [formGroup]="stockForm" (ngSubmit)="saveChanges()">
+        <!-- Name Field -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name">
+          <mat-error *ngIf="stockForm.get('name')?.hasError('required') && stockForm.get('name')?.touched">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Amount Field -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" formControlName="amount">
+          <mat-error *ngIf="stockForm.get('amount')?.hasError('required') && stockForm.get('amount')?.touched">
+            Amount is required
+          </mat-error>
+          <mat-error *ngIf="stockForm.get('amount')?.hasError('min') && stockForm.get('amount')?.touched">
+            Amount must be at least 1
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Buy Price and Sell Price in a Row -->
+        <div fxLayout="row" fxLayoutGap="16px" class="price-row">
+          <mat-form-field appearance="fill" fxFlex="50%">
+            <mat-label>Buy Price</mat-label>
+            <input matInput type="number" formControlName="buyPrice">
+            <mat-error *ngIf="stockForm.get('buyPrice')?.hasError('min') && stockForm.get('buyPrice')?.touched">
+              Buy Price must be at least 1
+            </mat-error>
+            <mat-error *ngIf="stockForm.get('buyPrice')?.hasError('priceError') && stockForm.get('buyPrice')?.touched">
+              Buy Price should not be greater than Sell Price
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" fxFlex="50%">
+            <mat-label>Sell Price</mat-label>
+            <input matInput type="number" formControlName="sellPrice">
+            <mat-error *ngIf="stockForm.get('sellPrice')?.hasError('min') && stockForm.get('sellPrice')?.touched">
+              Sell Price must be at least 1
+            </mat-error>
+            <mat-error *ngIf="stockForm.get('sellPrice')?.hasError('priceError') && stockForm.get('sellPrice')?.touched">
+              Sell Price should not be less than Buy Price
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="modal-footer" align="end">
+      <button mat-button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <button mat-raised-button color="primary" class="btn btn-primary" [disabled]="stockForm?.invalid" (click)="saveChanges()">
+        Save
+      </button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

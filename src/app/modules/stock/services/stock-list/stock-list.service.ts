@@ -4,6 +4,7 @@ import { catchError, map, Observable } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { JwtServiceService } from 'src/app/core/services/jwtService/jwt-service.service';
 import { IStock } from '../../interfaces/stock.interface';
+import { Iproduct } from 'src/app/modules/dashboard/interfaces/Iproduct';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,16 @@ export class StockListService {
     //     console.error('Error fetching stock:', error);
     //     return [];
     //   }))
+  }
+
+  EditStock(stockId: number, stockBody: IStock | Iproduct | any): Observable<IStock> {
+    const token = this.jwtService.getToken()
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    })
+
+    return this.http.patch(`/stock/${stockId}`, stockBody, headers)
   }
 
 }

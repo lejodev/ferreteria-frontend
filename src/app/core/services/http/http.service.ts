@@ -19,7 +19,7 @@ export class HttpService {
   get<T>(url: string, headers?: HttpHeaders, params?: HttpParams) {
     console.log("API", this.api(url));
 
-    return this.http.get<T>(this.api(url), {headers, params });
+    return this.http.get<T>(this.api(url), { headers, params });
   }
 
   post<T>(url: string, body: any, headers?: HttpHeaders) {
@@ -30,12 +30,12 @@ export class HttpService {
     return this.http.put<T>(this.api(url), body, { headers });
   }
 
-  delete<T>(url: string, headers?: HttpHeaders) {
-    return this.http.delete<T>(this.api(url), { headers });
-  }
-
   patch<T>(url: string, body: any, headers?: HttpHeaders) {
     return this.http.patch<T>(this.api(url), body, { headers });
+  }
+
+  delete<T>(url: string, headers?: HttpHeaders) {
+    return this.http.delete<T>(this.api(url), { headers });
   }
 
   head<T>(url: string, headers?: HttpHeaders) {
