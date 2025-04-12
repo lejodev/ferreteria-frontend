@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 import { HttpService } from 'src/app/core/services/http/http.service';
 import { JwtServiceService } from 'src/app/core/services/jwtService/jwt-service.service';
+import { NotificationsService } from '../../services/notifications/notifications.service';
 
 @Component({
   selector: 'app-stock-list',
@@ -37,6 +38,7 @@ export class StockListComponent implements OnInit {
     public dialog: MatDialog,
     private http: HttpService,
     private jwtService: JwtServiceService,
+    private notificationService: NotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -117,6 +119,7 @@ export class StockListComponent implements OnInit {
       amount: this.stockForm.get('amount')?.value,
       products: {
         id: this.selectedStock.products.id,
+        name: this.stockForm.get('name')?.value,
         buyPrice: this.stockForm.get('buyPrice')?.value,
         sellPrice: this.stockForm.get('sellPrice')?.value,
       },

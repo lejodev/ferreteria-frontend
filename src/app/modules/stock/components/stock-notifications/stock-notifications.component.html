@@ -1,1 +1,21 @@
-<p>stock-notifications works!</p>
+<div class="notifications-container">
+    <mat-card class="notifications">
+      <mat-card-title>Stock notifications</mat-card-title>
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <span>Notifications</span>
+          <span class="spacer"></span>
+          <button mat-icon-button (click)="loadStock()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <mat-card-content>
+        <div *ngFor="let notification of stockNotifications" class="notification-item">
+          <div class="circle-indicator"></div>
+          <div class="notification-message">{{ notification.message }}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
