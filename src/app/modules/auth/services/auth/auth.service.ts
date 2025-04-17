@@ -16,6 +16,8 @@ export class AuthService {
   constructor(private http: HttpService) { }
 
   login(credentials: any) {
+    console.log(credentials);
+    
     return this.http.post<LoginResponse>('/auth/login', credentials).pipe(tap((user) => {
       this.currentUser = user.token;
       localStorage.setItem('token', user.token);

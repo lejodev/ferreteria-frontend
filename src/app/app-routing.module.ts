@@ -27,7 +27,7 @@ const routes: Routes = [
     path: '',
     component: BaseComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Employee.ADMIN, Employee.SELLER] }, // Define required roles for this route
+    data: { roles: [Employee.ADMIN, Employee.SELLER, Employee.ASSISTANT, Employee.CHIEF] }, // Define required roles for this route
     children: [
       {
         path: '', redirectTo: 'dashboard', pathMatch: 'full'

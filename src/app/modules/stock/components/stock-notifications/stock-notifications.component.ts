@@ -57,5 +57,13 @@ export class StockNotificationsComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    if (this.pollingSub) {
+      this.pollingSub.unsubscribe();
+      console.log('Unsubscribed!');
+      
+    }
+  }
+
 
 }

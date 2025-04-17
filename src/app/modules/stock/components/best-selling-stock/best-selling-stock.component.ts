@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IStock } from '../../interfaces/stock.interface';
+import { StockListService } from '../../services/stock-list/stock-list.service';
 
 @Component({
   selector: 'app-best-selling-stock',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BestSellingStockComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private stock: StockListService
+  ) { }
 
   ngOnInit(): void {
+
   }
 
 }

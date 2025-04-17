@@ -42,11 +42,15 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
+        console.log(response);
+        
         this.authService.saveToken(response.token); // Save token to local storage
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         console.error('Login failed:', err);
+        console.log(err);
+        
         alert('Login failed. Please check your credentials and try again.');
       },
     });
